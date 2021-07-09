@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Dado } from './Dado';
 import { useState, useContext } from 'react';
 import { Context } from "./Context";
