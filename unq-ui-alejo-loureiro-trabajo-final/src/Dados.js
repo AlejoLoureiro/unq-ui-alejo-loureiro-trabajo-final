@@ -6,7 +6,13 @@ import { Context } from "./Context";
 export function Dados(){
 
     const { state } = useContext(Context);
-    const [dados,setDados] = useState(state.dados);
+    let [dados,setDados] = useState(state.dados);
+
+    useEffect(() => {
+            dados = state.dados
+            console.log("use")
+        },[state.dados]
+    );
 
     return(
         <div>

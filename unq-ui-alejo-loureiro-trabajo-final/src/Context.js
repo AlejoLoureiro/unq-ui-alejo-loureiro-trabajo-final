@@ -16,7 +16,7 @@ const ContextProvider = ({children}) => {
     const state = {
         dados:[{
             numero:1,
-            foco: true,
+            foco: false,
         },
         {
             numero:2,
