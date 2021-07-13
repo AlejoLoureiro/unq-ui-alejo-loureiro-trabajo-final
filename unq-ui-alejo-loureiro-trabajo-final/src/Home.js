@@ -3,10 +3,11 @@ import { Dado } from './Dado';
 import { useState, useContext } from 'react';
 import { Context } from "./Context";
 import { Tabla } from "./Tabla";
+import { calcularJuegos } from "./Utilities"
 
 export function Home(){
     
-    const { state } = useContext(Context);
+    const { state, actions } = useContext(Context);
     let [dados,setDados] = useState(state.dados);
 
 
@@ -29,13 +30,15 @@ export function Home(){
     }
 
     const handleFinalizarTurno = () => {
-
+        const dados = state.dados;
+        const juegosDisponibles = calcularJuegos(dados);
+        console.log(juegosDisponibles);
     }
 
     return(
         <div className="container">
             <div className="row">
-                <div className="col-2 mx-auto">
+                <div className="col-3 mx-auto">
                     <div>
                         <p className='h1 mb-4'> Generala </p>
                     </div>

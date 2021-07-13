@@ -14,7 +14,7 @@ export function Dado(props) {
 
 
     return(
-            <button type="button" className={foco ? "btn btn-primary border btn-lg" : "btn btn-primary border"} onClick={clickDado}>
+            <button type="button" className={props.dado.foco ? "btn btn-primary border btn-lg" : "btn btn-primary border"} onClick={clickDado}>
                 {numero}
             </button>
     )

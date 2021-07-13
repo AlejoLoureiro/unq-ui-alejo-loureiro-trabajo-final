@@ -1,17 +1,20 @@
-import React, { createContext, useState, useMemo, useContext } from 'react';
+import React, { createContext, useState } from 'react';
 
 const Context = createContext({
     state: {
-        dados:[]
+        dados:[],
+        datosTabla:[]
     },
     actions: {
-        setDados: (dados) => {}
+        setDados: (dados) => {},
+        setDatosTabla: (datosTable) => {}
     }
 })
 
 const ContextProvider = ({children}) => {
 
     const [dados, setDados] = useState();
+    const [datosTable, setDatosTabla] = useState();
 
     const state = {
         dados:[{
@@ -34,10 +37,63 @@ const ContextProvider = ({children}) => {
             numero:5,
             foco: false,
         }],
+        datosTabla:[
+            {
+                juego:"1",
+                puntos:0,
+                usado:false
+            },
+            {
+                juego:"2",
+                puntos:0,
+                usado:false
+            },
+            {
+                juego:"3",
+                puntos:0,
+                usado:false
+            },
+            {
+                juego:"4",
+                puntos:0,
+                usado:false
+            },
+            {
+                juego:"5",
+                puntos:0,
+                usado:false
+            },
+            {
+                juego:"6",
+                puntos:0,
+                usado:false
+            },
+            {
+                juego:"Escalera",
+                puntos:0,
+                usado:false
+            },
+            {
+                juego:"Full",
+                puntos:0,
+                usado:false
+            },
+            {
+                juego:"Poker",
+                puntos:0,
+                usado:false
+            },
+            {
+                juego:"Generala",
+                puntos:0,
+                usado:false
+            }
+        ]
     }
 
     const actions = {
-        setDados
+        setDados,
+        setDatosTabla
     }
 
     return (
