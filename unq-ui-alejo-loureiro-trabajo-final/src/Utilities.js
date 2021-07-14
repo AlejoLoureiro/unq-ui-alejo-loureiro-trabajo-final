@@ -1,4 +1,5 @@
 export const findDatos = (list, juego) => {
+    //devuelve los datos del juego dentro de la lista
     for (let i = 0; i < list.length; i++){
         if (list[i].juego === juego) {
             return list[i];
@@ -38,8 +39,40 @@ export const calcularJuegos = (dados) => {
     if (esGenerala(dados)){
         result.push("Generala");
     }
-
     return result;
+}
+
+export const puntos = (juego,n) => {
+    if (juego === "1"){
+        return 1*n;
+    }
+    if (juego === "2"){
+        return 2*n;
+    }
+    if (juego === "3"){
+        return 3*n;
+    }
+    if (juego === "4"){
+        return 4*n;
+    }
+    if (juego === "5"){
+        return 5*n;
+    }
+    if (juego === "6"){
+        return 6*n;
+    }
+    if (juego === "Escalera"){
+        return 20;
+    }
+    if (juego === "Full"){
+        return 30;
+    }
+    if (juego === "Poker"){
+        return 40;
+    }
+    if (juego === "Generala"){
+        return 60;
+    }
 }
 
 const hayNumero = (dados,nro) => {

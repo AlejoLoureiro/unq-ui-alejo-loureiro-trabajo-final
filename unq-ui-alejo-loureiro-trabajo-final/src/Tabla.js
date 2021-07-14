@@ -8,7 +8,6 @@ export function Tabla(props) {
     const { state } = useContext(Context);
 
     return(
-        <div>
             <table className="table">
                 <thead>
                     <tr>
@@ -38,6 +37,5 @@ export function Tabla(props) {
                     <Row data={findDatos(state.datosTabla,"Generala")} />
                 </tbody>
             </table>
-        </div>
     )
 }

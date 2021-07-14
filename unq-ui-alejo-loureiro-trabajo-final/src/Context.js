@@ -1,23 +1,23 @@
 import React, { createContext, useState } from 'react';
 
 const inicioDados = [{
-                        numero:0,
+                        numero:"-",
                         foco: false,
                     },
                     {
-                        numero:0,
+                        numero:"-",
                         foco: false,
                     },
                     {
-                        numero:0,
+                        numero:"-",
                         foco: false,
                     },
                     {
-                        numero:0,
+                        numero:"-",
                         foco: false,
                     },
                     {
-                        numero:0,
+                        numero:"-",
                         foco: false,
                     }];
 
@@ -44,52 +44,62 @@ const ContextProvider = ({children}) => {
             {
                 juego:"1",
                 puntos:0,
-                usado:false
+                usado:false,
+                activo:false
             },
             {
                 juego:"2",
                 puntos:0,
-                usado:false
+                usado:false,
+                activo:false
             },
             {
                 juego:"3",
                 puntos:0,
-                usado:false
+                usado:false,
+                activo:false
             },
             {
                 juego:"4",
                 puntos:0,
-                usado:false
+                usado:false,
+                activo:false
             },
             {
                 juego:"5",
                 puntos:0,
-                usado:false
+                usado:false,
+                activo:false
             },
             {
                 juego:"6",
                 puntos:0,
-                usado:false
+                usado:false,
+                activo:false
             },
             {
                 juego:"Escalera",
                 puntos:0,
-                usado:false
+                usado:false,
+                activo:false
             },
             {
                 juego:"Full",
                 puntos:0,
-                usado:false
+                usado:false,
+                activo:false
             },
             {
                 juego:"Poker",
                 puntos:0,
-                usado:false
+                usado:false,
+                activo:false
             },
             {
                 juego:"Generala",
                 puntos:0,
-                usado:false
+                usado:false,
+                activo:false
             }
         ]
     }
