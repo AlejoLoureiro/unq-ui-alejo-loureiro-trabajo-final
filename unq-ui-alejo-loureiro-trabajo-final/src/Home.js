@@ -3,12 +3,13 @@ import { Dado } from './Dado';
 import { useState, useContext } from 'react';
 import { Context } from "./Context";
 import { Tabla } from "./Tabla";
-import { calcularJuegos } from "./Utilities"
+import { calcularJuegos, esGenerala } from "./Utilities"
 
 export function Home(){
     
     const { state, actions } = useContext(Context);
     let [dados,setDados] = useState(state.dados);
+    let [rondas,setRondas] = useState(3); 
 
 
     const randomNum = (min, max) => {
@@ -27,12 +28,17 @@ export function Home(){
             }
         }))
         state.dados.map(dado => dado.foco=false);
+        setRondas(rondas-1);
+        if (rondas === 0){
+            handleFinalizarTurno()
+        }
     }
 
     const handleFinalizarTurno = () => {
         const dados = state.dados;
         const juegosDisponibles = calcularJuegos(dados);
-        console.log(juegosDisponibles);
+        setRondas(2);
+        console.log(actions.resetDados());
     }
 
     return(
@@ -54,6 +60,9 @@ export function Home(){
                     <div>
                         <button type="button" className="btn btn-primary border btn-lg my-4" onClick={handleTirar}> Tirar </button>
                         <button type="button" className="btn btn-primary border btn-lg" onClick={handleFinalizarTurno}> Finalizar </button>
+                        <div className="card">
+                            <b>Ronda Numero: {rondas}</b>
+                        </div>
                     </div>
                 </div>
                 <div className="col-2 mx-auto">

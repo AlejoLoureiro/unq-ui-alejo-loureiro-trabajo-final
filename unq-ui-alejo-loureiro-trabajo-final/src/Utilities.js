@@ -1,6 +1,6 @@
 export const findDatos = (list, juego) => {
     for (let i = 0; i < list.length; i++){
-        if (list[i].juego == juego) {
+        if (list[i].juego === juego) {
             return list[i];
         }
     }
@@ -44,30 +44,73 @@ export const calcularJuegos = (dados) => {
 
 const hayNumero = (dados,nro) => {
     for(let i = 0; i < dados.length;i++){
-        if(dados[i].numero == nro){
+        if(dados[i].numero === nro){
             return true;
         }
     }
     return false;
 }
 
-const esEscalera = (dados) => {
-    const sortedDados = dados.sort()
-    let prevNum = 0;
-    for(let i = 1; i < dados.length;i++){
-        
+export const esEscalera = (dados) => {
+    const sortedDados = dados.map(dado => dado.numero).sort();
+    let result = false;
+    for(let i = 0; i < dados.length - 1;i++){
+        if(sortedDados[i] === (sortedDados[i+1] - 1)){
+            result = true;
+        } else {
+            return false;
+        }
     }
-    return false;
+    return result;
 }
 
 const esFull = (dados) => {
+    // nnmmm nnnmm
+    const numeros = dados.map(dado => dado.numero).sort();
 
+    const n1 = numeros[0];
+    const n2 = numeros[1];
+    const n3 = numeros[2];
+    const n4 = numeros[3];
+    const n5 = numeros[4];
+
+    if (n1 === n2 && n2 === n3 && n3 !== n4 && n4 === n5){
+        return true;
+    } else if (n1 === n2 && n2 !== n3 && n3 === n4 && n4 === n5){
+        return true;
+    } else {
+        return false;
+    }
 }
 
 const esPoker = (dados) => {
-    
+    // nmmmm nnnnm
+    const numeros = dados.map(dado => dado.numero).sort();
+
+    const n1 = numeros[0];
+    const n2 = numeros[1];
+    const n3 = numeros[2];
+    const n4 = numeros[3];
+    const n5 = numeros[4];
+
+    if (n1 === n2 && n2 === n3 && n3 === n4){
+        return true;
+    } else if (n2 === n3 && n3 === n4 && n4 === n5){
+        return true;
+    } else {
+        return false;
+    }
 }
 
-const esGenerala = (dados) => {
-    
+export const esGenerala = (dados) => {
+    const numeros = dados.map(dado => dado.numero);
+    let result = false;
+    for (let i = 0; i < numeros.length - 1; i++){
+        if (numeros[i] === numeros[i+1]){
+            result = true;
+        } else {
+            return false;
+        }
+    }
+    return result;
 }

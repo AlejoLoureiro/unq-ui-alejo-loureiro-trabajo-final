@@ -1,5 +1,26 @@
 import React, { createContext, useState } from 'react';
 
+const inicioDados = [{
+                        numero:0,
+                        foco: false,
+                    },
+                    {
+                        numero:0,
+                        foco: false,
+                    },
+                    {
+                        numero:0,
+                        foco: false,
+                    },
+                    {
+                        numero:0,
+                        foco: false,
+                    },
+                    {
+                        numero:0,
+                        foco: false,
+                    }];
+
 const Context = createContext({
     state: {
         dados:[],
@@ -7,7 +28,8 @@ const Context = createContext({
     },
     actions: {
         setDados: (dados) => {},
-        setDatosTabla: (datosTable) => {}
+        setDatosTabla: (datosTable) => {},
+        resetDados: () => {}
     }
 })
 
@@ -17,26 +39,7 @@ const ContextProvider = ({children}) => {
     const [datosTable, setDatosTabla] = useState();
 
     const state = {
-        dados:[{
-            numero:1,
-            foco: false,
-        },
-        {
-            numero:2,
-            foco: false,
-        },
-        {
-            numero:3,
-            foco: false,
-        },
-        {
-            numero:4,
-            foco: false,
-        },
-        {
-            numero:5,
-            foco: false,
-        }],
+        dados:inicioDados,
         datosTabla:[
             {
                 juego:"1",
@@ -93,7 +96,11 @@ const ContextProvider = ({children}) => {
 
     const actions = {
         setDados,
-        setDatosTabla
+        setDatosTabla,
+        resetDados: () => {
+            setDados(inicioDados);
+            return inicioDados;
+        }
     }
 
     return (
