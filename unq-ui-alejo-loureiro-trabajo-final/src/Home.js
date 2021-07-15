@@ -83,7 +83,6 @@ export function Home(){
         }))
     }
 
-
     const randomNum = (min, max) => {
         return Math.floor(Math.random() * (max - min + 1)) + min;
     }
@@ -173,91 +172,90 @@ export function Home(){
 
 const inicioDados = [{
 
-    id:0,
-    numero:"-",
-    foco: false,
-},
-{
-    id:1,
-    numero:"-",
-    foco: false,
-},
-{
-    id:2,
-    numero:"-",
-    foco: false,
-},
-{
-    id:3,
-    numero:"-",
-    foco: false,
-},
-{
-    id:4,
-    numero:"-",
-    foco: false,
-}];
+                        id:0,
+                        numero:"-",
+                        foco: false,
+                    },
+                    {
+                        id:1,
+                        numero:"-",
+                        foco: false,
+                    },
+                    {
+                        id:2,
+                        numero:"-",
+                        foco: false,
+                    },
+                    {
+                        id:3,
+                        numero:"-",
+                        foco: false,
+                    },
+                    {
+                        id:4,
+                        numero:"-",
+                        foco: false,
+                    }];
 
 
-const inicioDatosTabla =[
-    {
-        juego:"1",
-        puntos:0,
-        usado:false,
-        activo:false
-    },
-    {
-        juego:"2",
-        puntos:0,
-        usado:false,
-        activo:false
-    },
-    {
-        juego:"3",
-        puntos:0,
-        usado:false,
-        activo:false
-    },
-    {
-        juego:"4",
-        puntos:0,
-        usado:false,
-        activo:false
-    },
-    {
-        juego:"5",
-        puntos:0,
-        usado:false,
-        activo:false
-    },
-    {
-        juego:"6",
-        puntos:0,
-        usado:false,
-        activo:false
-    },
-    {
-        juego:"Escalera",
-        puntos:0,
-        usado:false,
-        activo:false
-    },
-    {
-        juego:"Full",
-        puntos:0,
-        usado:false,
-        activo:false
-    },
-    {
-        juego:"Poker",
-        puntos:0,
-        usado:false,
-        activo:false
-    },
-    {
-        juego:"Generala",
-        puntos:0,
-        usado:false,
-        activo:false
-    }
-]
+const inicioDatosTabla =[{
+                            juego:"1",
+                            puntos:0,
+                            usado:false,
+                            activo:false
+                        },
+                        {
+                            juego:"2",
+                            puntos:0,
+                            usado:false,
+                            activo:false
+                        },
+                        {
+                            juego:"3",
+                            puntos:0,
+                            usado:false,
+                            activo:false
+                        },
+                        {
+                            juego:"4",
+                            puntos:0,
+                            usado:false,
+                            activo:false
+                        },
+                        {
+                            juego:"5",
+                            puntos:0,
+                            usado:false,
+                            activo:false
+                        },
+                        {
+                            juego:"6",
+                            puntos:0,
+                            usado:false,
+                            activo:false
+                        },
+                        {
+                            juego:"Escalera",
+                            puntos:0,
+                            usado:false,
+                            activo:false
+                        },
+                        {
+                            juego:"Full",
+                            puntos:0,
+                            usado:false,
+                            activo:false
+                        },
+                        {
+                            juego:"Poker",
+                            puntos:0,
+                            usado:false,
+                            activo:false
+                        },
+                        {
+                            juego:"Generala",
+                            puntos:0,
+                            usado:false,
+                            activo:false
+                        }
+                    ]

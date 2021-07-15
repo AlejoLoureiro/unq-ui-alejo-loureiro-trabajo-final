@@ -5,7 +5,6 @@ export function Row(props){
     const juego = props.data.juego;
     const click = props.onClick;
     const clickTachar = props.onClickTachar
-    const activo = props.data.activo;
 
     return(
         <tr>
