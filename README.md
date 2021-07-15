@@ -1,4 +1,5 @@
 # unq-ui-alejo-loureiro-trabajo-final
+# Como levantar la app
 
 <b>1- Abrir el repositorio en Visual Studio Code</b><br>
 <b>2- Crear una nueva terminal en el IDE</b><br>
