@@ -107,8 +107,10 @@ const esFull = (dados) => {
     const n4 = numeros[3];
     const n5 = numeros[4];
 
+    // nnnmm
     if (n1 === n2 && n2 === n3 && n3 !== n4 && n4 === n5){
         return true;
+    // nnmmm
     } else if (n1 === n2 && n2 !== n3 && n3 === n4 && n4 === n5){
         return true;
     } else {

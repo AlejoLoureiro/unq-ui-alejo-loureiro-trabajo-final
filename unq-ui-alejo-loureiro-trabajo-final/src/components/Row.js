@@ -1,6 +1,4 @@
-import React, { useContext, useState } from 'react';
-import { Context } from "C:/Users/ALEJO/Desktop/Facu/UI/unq-ui-alejo-loureiro-trabajo-final/unq-ui-alejo-loureiro-trabajo-final/src/Context";
-import { puntos } from "C:/Users/ALEJO/Desktop/Facu/UI/unq-ui-alejo-loureiro-trabajo-final/unq-ui-alejo-loureiro-trabajo-final/src/Utilities";
+import React from 'react';
 
 export function Row(props){
 
@@ -20,7 +18,7 @@ export function Row(props){
                 {props.data.puntos}
             </td>
             <td>
-                <button type="button" className="btn btn-light" onClick={(event) => clickTachar(event, juego)}>
+                <button type="button" className="btn btn-light" onClick={(event) => clickTachar(event, juego)} disabled={props.data.usado}>
                     Tachar
                 </button>
             </td>

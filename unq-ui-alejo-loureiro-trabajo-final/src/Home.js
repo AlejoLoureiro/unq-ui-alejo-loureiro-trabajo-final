@@ -1,7 +1,6 @@
 import React from 'react';
 import { Dado } from './Dado';
-import { useState, useContext, useEffect } from 'react';
-import { Context } from "./Context";
+import { useState } from 'react';
 import { Tabla } from "./Tabla";
 import { calcularJuegos } from "./Utilities";
 import { puntos } from "C:/Users/ALEJO/Desktop/Facu/UI/unq-ui-alejo-loureiro-trabajo-final/unq-ui-alejo-loureiro-trabajo-final/src/Utilities";
@@ -23,6 +22,14 @@ export function Home(){
         setPuntosTotales(total);
     }
 
+    const resetDados = () => {
+        setDados(dados.map(dado => {
+            dado.numero = "-";
+            dado.foco = false;
+            return dado;
+        }))
+    }
+
     const tachar = (event, juego) => {
         setDatosTabla(datosTabla.map(dato =>{
             if (dato.juego === juego){
@@ -30,7 +37,7 @@ export function Home(){
             } 
             return dato;
         }))
-        setDados(inicioAux);
+        resetDados();
         updatePuntosTotales();
         desactivarJuegos();
         setRondas(3);
@@ -63,7 +70,7 @@ export function Home(){
             } 
             return dato;
         }))
-        setDados(inicioAux);
+        resetDados();
         updatePuntosTotales();
         desactivarJuegos();
         setRondas(3);
@@ -140,7 +147,7 @@ export function Home(){
                         </div>
                     </div>
                 </div>
-                <div className="col-2 mx-auto">
+                <div className="col-3 mx-auto">
                         <p className='h1 mb-4'> Puntos: {puntosTotales} </p>
                         <Tabla data={datosTabla} onClick={clickJuego} clickTachar={tachar}/>
                 </div>
@@ -176,32 +183,6 @@ const inicioDados = [{
     foco: false,
 }];
 
-const inicioAux = [{
-
-    id:0,
-    numero:"-",
-    foco: false,
-},
-{
-    id:1,
-    numero:"-",
-    foco: false,
-},
-{
-    id:2,
-    numero:"-",
-    foco: false,
-},
-{
-    id:3,
-    numero:"-",
-    foco: false,
-},
-{
-    id:4,
-    numero:"-",
-    foco: false,
-}];
 
 const inicioDatosTabla =[
     {

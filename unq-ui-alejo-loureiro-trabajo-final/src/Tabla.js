@@ -1,5 +1,4 @@
-import React, { useContext, useState } from 'react';
-import { Context } from "./Context";
+import React from 'react';
 import { Row } from "./components/Row"
 import { findDatos } from './Utilities';
 
