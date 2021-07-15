@@ -117,10 +117,22 @@ export function Home(){
 
     const handleFinalizarTurno = () => {
         const juegosDisponibles = calcularJuegos(dados);
-        setRondas(2);
         activarRequeridos(juegosDisponibles);
         updatePuntosTotales();
         setRondas(0);
+    }
+
+    const handleReiniciar = () => {
+        resetDados();
+        desactivarJuegos();
+        setPuntosTotales(0);
+        setRondas(3);
+        setDatosTabla(datosTabla.map(dato =>{
+            dato.puntos = 0;
+            dato.tachar = false;
+            dato.usado = false;
+            return dato;
+        }));
     }
 
     return(
@@ -144,6 +156,9 @@ export function Home(){
                         <button type="button" className="btn btn-primary border btn-lg" onClick={handleFinalizarTurno}> Finalizar </button>
                         <div className="card">
                             <b>Ronda Numero: {rondas}</b>
+                        </div>
+                        <div>
+                            <button type="button" className="btn btn-primary btn-lg my-4" onClick={handleReiniciar}> Reiniciar </button>
                         </div>
                     </div>
                 </div>

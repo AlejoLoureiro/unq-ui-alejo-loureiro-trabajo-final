@@ -8,7 +8,6 @@
 }
 
 .table {
-  padding: 3px 10px;
   border: PowderBlue 5px solid;
   border-radius: 20px;
   background-color: white;
@@ -23,7 +22,7 @@
 }
 
 .main {
-  background-image: url();
+  background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Two_red_dice_01.svg/1200px-Two_red_dice_01.svg.png);
 
 }
 
