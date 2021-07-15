@@ -5,7 +5,7 @@ import {Home} from './Home';
 
 function App() {
   return (
-      <Home className="p-3 mb-2 bg-primary text-white"/>
+      <Home/>
   );
 }
 

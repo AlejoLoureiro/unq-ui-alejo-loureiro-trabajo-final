@@ -125,12 +125,12 @@ export function Home(){
 
     return(
         <div className="container">
-            <div className="row">
+            <div className="generala row"> 
+                <div className="h1 text-center"> Generala </div> 
+            </div>
+            <div className="row main">
                 <div className="col-3 mx-auto">
-                    <div>
-                        <p className='h1 mb-4'> Generala </p>
-                    </div>
-                    <div>
+                    <div className="dados">
                         <div>
                             <Dado dado={dados[0]} fun={clickDado}/>
                             <Dado dado={dados[1]} fun={clickDado}/>
@@ -147,8 +147,8 @@ export function Home(){
                         </div>
                     </div>
                 </div>
-                <div className="col-3 mx-auto">
-                        <p className='h1 mb-4'> Puntos: {puntosTotales} </p>
+                <div className="col-3 mx-auto tabla">
+                        <p className='h1 mb-4 puntos'> Puntos: {puntosTotales} </p>
                         <Tabla data={datosTabla} onClick={clickJuego} clickTachar={tachar}/>
                 </div>
             </div>

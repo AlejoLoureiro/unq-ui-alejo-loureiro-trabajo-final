@@ -2,6 +2,31 @@
   text-align: center;
 }
 
+.generala {
+  background-color: green;
+  color: white;
+}
+
+.table {
+  padding: 3px 10px;
+  border: PowderBlue 5px solid;
+  border-radius: 20px;
+  background-color: white;
+}
+
+.dados {
+  padding-top: 15px;
+}
+
+.puntos {
+  color: black;
+}
+
+.main {
+  background-image: url();
+
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
