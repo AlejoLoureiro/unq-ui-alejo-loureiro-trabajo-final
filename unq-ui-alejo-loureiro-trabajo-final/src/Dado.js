@@ -1,20 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
 
 
 export function Dado(props) {
 
+    const id = props.dado.id;
     let numero = props.dado.numero;
-    const [foco,setFoco] = useState(props.dado.foco)
-
-    const clickDado = () => {
-        setFoco(!foco);
-        props.dado.foco = !props.dado.foco;
-    }
-
+    let foco = props.dado.foco;
+    const onClick = props.fun;
 
     return(
-            <button type="button" className={props.dado.foco ? "btn btn-primary border btn-lg" : "btn btn-primary border"} onClick={clickDado}>
+            <button type="button" className={foco ? "btn btn-primary border btn-lg" : "btn btn-primary border"} onClick={(event) => onClick(event, id)}>
                 {numero}
             </button>
     )

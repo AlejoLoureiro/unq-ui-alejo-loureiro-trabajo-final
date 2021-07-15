@@ -4,21 +4,76 @@ import { useState, useContext, useEffect } from 'react';
 import { Context } from "./Context";
 import { Tabla } from "./Tabla";
 import { calcularJuegos } from "./Utilities";
+import { puntos } from "C:/Users/ALEJO/Desktop/Facu/UI/unq-ui-alejo-loureiro-trabajo-final/unq-ui-alejo-loureiro-trabajo-final/src/Utilities";
+
 
 
 export function Home(){
     
-    const { state } = useContext(Context);
-    const [dados,setDados] = useState(state.dados);
+    const [dados,setDados] = useState(inicioDados);
+    const [datosTabla, setDatosTabla] = useState(inicioDatosTabla);
     const [rondas,setRondas] = useState(3);
     const [puntosTotales, setPuntosTotales] = useState(0);
 
-    const updatePuntosTotales = () =>{
+    const updatePuntosTotales = () => {
         let total = 0;
-        state.datosTabla.map(dato => {
+        datosTabla.map(dato => {
             total = total + dato.puntos;
         })
         setPuntosTotales(total);
+    }
+
+    const tachar = (event, juego) => {
+        setDatosTabla(datosTabla.map(dato =>{
+            if (dato.juego === juego){
+                dato.usado = true;
+            } 
+            return dato;
+        }))
+        setDados(inicioAux);
+        updatePuntosTotales();
+        desactivarJuegos();
+        setRondas(3);
+    }
+
+    const clickDado = (event,id) => {
+        setDados(dados.map(dado => {
+            if (dado.id === id){
+                dado.foco = !dado.foco;
+                return dado;
+            } else {
+                return dado;
+            }
+        }))
+    }
+
+    const clickJuego = (event, juego) =>{
+        let n = 0;
+        if (juego === "1" || juego === "2" || juego === "3" || juego === "4" || juego === "5" || juego === "6"){
+            for (let i=0; i < dados.length; i++){
+                if (dados[i].numero == juego){
+                    n++
+                }
+            }
+        }
+        setDatosTabla(datosTabla.map(dato =>{
+            if (dato.juego === juego){
+                dato.puntos = (puntos(juego,n));
+                dato.usado = true;
+            } 
+            return dato;
+        }))
+        setDados(inicioAux);
+        updatePuntosTotales();
+        desactivarJuegos();
+        setRondas(3);
+    }
+
+    const desactivarJuegos = () => {
+        setDatosTabla(datosTabla.map(dato => {
+            dato.activo = false;
+            return dato;
+        }))
     }
 
 
@@ -28,45 +83,37 @@ export function Home(){
 
     const activarRequeridos = (list) => {
         for (let i=0; i < list.length; i++){
-            for (let j=0; j < state.datosTabla.length; j++){
-                if (list[i] === state.datosTabla[j].juego){
-                    state.datosTabla[j].activo = true;
+            setDatosTabla(datosTabla.map(dato => {
+                if (list[i] === dato.juego){
+                    dato.activo = true;
+                    return dato;
+                } else {
+                    return dato;
                 }
-            }
-        }
-    }
-
-    const desactivarJuegos = () => {
-        for (let i=0; i < state.datosTabla.length; i++){
-            state.datosTabla[i].activo = false;
+            }))
         }
     }
 
     const handleTirar = () => {
-        setDados(state.dados.map(dado => {
+        setDados(dados.map(dado => {
             if (dado.foco === false){
                 let num = randomNum(1,6)
                 dado.numero = num;
                 return dado;
             } else {
+                dado.foco = false;
                 return dado;
             }
         }));
-        state.dados.map(dado => dado.foco=false);
         setRondas(rondas-1);
-        if (rondas === 0){
-            handleFinalizarTurno();
-        }
-        desactivarJuegos();
-        updatePuntosTotales();
     }
 
     const handleFinalizarTurno = () => {
-        const dados = state.dados;
         const juegosDisponibles = calcularJuegos(dados);
         setRondas(2);
         activarRequeridos(juegosDisponibles);
         updatePuntosTotales();
+        setRondas(0);
     }
 
     return(
@@ -78,15 +125,15 @@ export function Home(){
                     </div>
                     <div>
                         <div>
-                            <Dado dado={dados[0]}/>
-                            <Dado dado={dados[1]}/>
-                            <Dado dado={dados[2]}/>
-                            <Dado dado={dados[3]}/>
-                            <Dado dado={dados[4]}/>
+                            <Dado dado={dados[0]} fun={clickDado}/>
+                            <Dado dado={dados[1]} fun={clickDado}/>
+                            <Dado dado={dados[2]} fun={clickDado}/>
+                            <Dado dado={dados[3]} fun={clickDado}/>
+                            <Dado dado={dados[4]} fun={clickDado}/>
                         </div>
                     </div>
                     <div>
-                        <button type="button" className="btn btn-primary border btn-lg my-4" onClick={handleTirar}> Tirar </button>
+                        <button type="button" className="btn btn-primary border btn-lg my-4" onClick={handleTirar} disabled = {rondas == 0}> Tirar </button>
                         <button type="button" className="btn btn-primary border btn-lg" onClick={handleFinalizarTurno}> Finalizar </button>
                         <div className="card">
                             <b>Ronda Numero: {rondas}</b>
@@ -95,9 +142,126 @@ export function Home(){
                 </div>
                 <div className="col-2 mx-auto">
                         <p className='h1 mb-4'> Puntos: {puntosTotales} </p>
-                        <Tabla/>
+                        <Tabla data={datosTabla} onClick={clickJuego} clickTachar={tachar}/>
                 </div>
             </div>
         </div>
     )
 }
+
+const inicioDados = [{
+
+    id:0,
+    numero:"-",
+    foco: false,
+},
+{
+    id:1,
+    numero:"-",
+    foco: false,
+},
+{
+    id:2,
+    numero:"-",
+    foco: false,
+},
+{
+    id:3,
+    numero:"-",
+    foco: false,
+},
+{
+    id:4,
+    numero:"-",
+    foco: false,
+}];
+
+const inicioAux = [{
+
+    id:0,
+    numero:"-",
+    foco: false,
+},
+{
+    id:1,
+    numero:"-",
+    foco: false,
+},
+{
+    id:2,
+    numero:"-",
+    foco: false,
+},
+{
+    id:3,
+    numero:"-",
+    foco: false,
+},
+{
+    id:4,
+    numero:"-",
+    foco: false,
+}];
+
+const inicioDatosTabla =[
+    {
+        juego:"1",
+        puntos:0,
+        usado:false,
+        activo:false
+    },
+    {
+        juego:"2",
+        puntos:0,
+        usado:false,
+        activo:false
+    },
+    {
+        juego:"3",
+        puntos:0,
+        usado:false,
+        activo:false
+    },
+    {
+        juego:"4",
+        puntos:0,
+        usado:false,
+        activo:false
+    },
+    {
+        juego:"5",
+        puntos:0,
+        usado:false,
+        activo:false
+    },
+    {
+        juego:"6",
+        puntos:0,
+        usado:false,
+        activo:false
+    },
+    {
+        juego:"Escalera",
+        puntos:0,
+        usado:false,
+        activo:false
+    },
+    {
+        juego:"Full",
+        puntos:0,
+        usado:false,
+        activo:false
+    },
+    {
+        juego:"Poker",
+        puntos:0,
+        usado:false,
+        activo:false
+    },
+    {
+        juego:"Generala",
+        puntos:0,
+        usado:false,
+        activo:false
+    }
+]

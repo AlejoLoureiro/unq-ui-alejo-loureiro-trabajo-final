@@ -5,33 +5,24 @@ import { puntos } from "C:/Users/ALEJO/Desktop/Facu/UI/unq-ui-alejo-loureiro-tra
 export function Row(props){
 
     const juego = props.data.juego;
-    const { state } = useContext(Context);
+    const click = props.onClick;
+    const clickTachar = props.onClickTachar
     const activo = props.data.activo;
-    const [usado,setUsado] = useState(props.data.usado);
-    
-    const handleClick = () => {
-        setUsado(true);
-        props.data.usado = true;
-        let n = 0;
-        if (juego === "1" || juego === "2" || juego === "3" || juego === "4" || juego === "5" || juego === "6"){
-            for (let i=0; i < state.dados.length; i++){
-                if (state.dados[i].numero == juego){
-                    n++
-                }
-            }
-        }
-        props.data.puntos = puntos(juego,n);
-    }
 
     return(
         <tr>
             <th scope="row">
-                <button type="button" className={!usado ? "btn btn-primary border" : "btn btn-secondary border"} onClick={handleClick} disabled={usado||!activo}>
+                <button type="button" className={!props.data.usado ? "btn btn-primary border" : "btn btn-secondary border"} onClick={(event) => click(event, juego)} disabled={props.data.usado||!props.data.activo}>
                     {juego}
                 </button>
             </th>
             <td>
                 {props.data.puntos}
+            </td>
+            <td>
+                <button type="button" className="btn btn-light" onClick={(event) => clickTachar(event, juego)}>
+                    Tachar
+                </button>
             </td>
         </tr>
     )
