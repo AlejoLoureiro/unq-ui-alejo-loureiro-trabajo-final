@@ -3,7 +3,7 @@ import { Dado } from './Dado';
 import { useState } from 'react';
 import { Tabla } from "./Tabla";
 import { calcularJuegos } from "./Utilities";
-import { puntos } from "C:/Users/ALEJO/Desktop/Facu/UI/unq-ui-alejo-loureiro-trabajo-final/unq-ui-alejo-loureiro-trabajo-final/src/Utilities";
+import { puntos } from "./Utilities";
 
 
 
